@@ -1,0 +1,16 @@
+{
+  "name": "react-training-repo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev-ui": "cd packages/ui && npm run dev",
+    "dev-server": "cd packages/server && npm run start:dev"
+  },
+  "keywords": [],
+  "author": "Waldemar Lehner <waldemar.lehner@opitz-consulting.com>",
+  "license": "ISC",
+  "description": "Monorepo containing a Express Server and React Frontend",
+  "workspaces": [
+    "packages/*"
+  ]
+}
