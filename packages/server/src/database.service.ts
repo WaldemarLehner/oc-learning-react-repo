@@ -84,7 +84,7 @@ export class DatabaseService implements OnModuleInit, OnModuleDestroy {
   public getAll(limit = -1, offset = -1) {
     return new Promise<RichEntry[]>((res, rej) => {
       this.#db.all(
-        'SELECT entry_id, time_from, time_to, project_id, break_duration_minutes, description, customer_name, project_name FROM time_entry_project_view LIMIT ? OFFSET ?',
+        'SELECT entry_id, time_from, time_to, project_id, break_duration_minutes, description, customer_name, project_name FROM time_entry_project_view ORDER BY time_from ASC LIMIT ? OFFSET ?',
         [limit, offset],
         (err, rows) => {
           if (err) {
@@ -149,7 +149,7 @@ export class DatabaseService implements OnModuleInit, OnModuleDestroy {
         SELECT entry_id, time_from, time_to, project_id, break_duration_minutes, description, customer_name, project_name 
         FROM time_entry_project_view
         WHERE (? BETWEEN time_from AND time_to) OR (? BETWEEN time_from AND time_to) OR 
-        (? <= time_from AND ? >= time_to)
+        (? <= time_from AND ? >= time_to) ORDER BY time_from ASC
         `,
         [from, to, from, to],
         (err, rows) => {
