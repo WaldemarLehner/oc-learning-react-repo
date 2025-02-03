@@ -96,7 +96,7 @@ export default function Index() {
   const [entries, setEntries] = useState<Entry[]>();
   useEffect(() => {
     clientLoader().then((e) => setEntries(e.data));
-  });
+  }, []);
 
   return (
     <div className="flex flex-col w-full max-w-4xl">
